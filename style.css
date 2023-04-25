@@ -1,32 +1,21 @@
-
 *{
-    font-family: 'Poppins', sans-serif;
+    color: white;
+    text-align: center;
+}
+
+h1{
+    font-size: 50px;
 }
 
 body{
     background-color: #040404;
-    align-items: center;
-    justify-content: center;
-    outline: none;
-}
-
-h1{
-    text-align: center;
-    color: white;
-    font-size: 5vh;
-}
-
-p{
-    text-align: center;
-    color: white;
-}
-
-form{
-    text-align: center;
-    margin-top: 50px;
-    padding: 30px;
-    box-shadow: 0px 0px 10px #2a2a2a;
-
+    height: 200px;
+    width: 400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -200px;
 }
 
 input[type=submit]{
@@ -40,13 +29,7 @@ input[type=submit]{
     border-radius: 50vh;
 }
 
-.all{
-    height: 200px;
-    width: 400px;
-
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-top: -200px;
-    margin-left: -200px;
-}
+form{
+    box-shadow: 0px 0px 10px #2a2a2a;
+    padding: 30px;
+} 
