@@ -37,11 +37,100 @@ form{
     background-color: #171622;
 } 
 
-input[type=text]{
+/* input[type=text]{
     border: none;
     border-bottom: 2px solid silver;
-}
+} */
 
 label{
     font-family: monospace;
+}
+
+
+
+.input-container{
+    width: 280px;
+    position: relative;
+}
+
+.label{
+    position: absolute;
+    left: 10px;
+    top: 14px;
+    transition: all 0.2s;
+    padding: 0 2px;
+    z-index: 1;
+    color: #b3b3b3;
+}
+
+.labelSurname{
+    position: absolute;
+    left: 10px;
+    top: 85px;
+    transition: all 0.2s;
+    padding: 0 2px;
+    z-index: 1;
+    color: #b3b3b3;
+}
+
+.text-input{
+    padding: 0.8rem;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #382f26;
+    background: #272530;
+    border-radius: 5px;
+    font-size: 18px;
+    outline: none;
+    transition: all 0.3s;
+    color: #fff;
+}
+
+.label::before{
+    content: "";
+    height: 5px;
+    background-color: #272530;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 100%;
+    z-index: -1;
+}
+/**/
+.labelSurname::before{
+    content: "";
+    height: 5px;
+    background-color: #272530;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 100%;
+    z-index: -1;
+}
+
+.text-input:focus{
+    border: 2px solid #fd7f0a;
+}
+
+.text-input:focus+.label,.filled{
+    top: -10px;
+    color: #fd7f0a;
+    font-size: 14px;
+}
+
+.text-input:focus+.labelSurname,.filled{
+    top: 55px;
+    color: #fd7f0a;
+    font-size: 14px;
+}
+
+.text-input::placeholder{
+    font-size: 16px;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.text-input:focus::placeholder{
+    opacity: 1;
+    animation-delay: 0.2s;
 }
