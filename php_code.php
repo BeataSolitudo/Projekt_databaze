@@ -27,7 +27,7 @@
     </form>
 
     <?php
-    isset($_POST["name"])
+    isset($_POST["name"]);
     {
         if($_POST["name"] == "admin")
         {echo("nigger");}
