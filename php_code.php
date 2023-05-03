@@ -31,7 +31,7 @@
     {
         if($_POST["name"] == "user" && $_POST["password"] == "user")
         {
-            header("Location: http://localhost/Projekt_databaze/assign_site.html");
+            header("Location: http://localhost/Projekt_databaze/assign_site.php");
         }
     }
     ?>
