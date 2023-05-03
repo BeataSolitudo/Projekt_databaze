@@ -10,9 +10,9 @@
 
 </head>
 <body>
-    <h1>Login Site!</h1>
+    <h1>Login Site</h1>
 
-    <form method="post" action="./php_code.php">
+    <form method="post">
         <div class="input-container">
             <input type="text" name="name" required class="text-input" placeholder="Enter name">
             <label class="label">Name</label>
@@ -27,10 +27,12 @@
     </form>
 
     <?php
-    isset($_POST["name"]);
+    if(isset($_POST["name"], $_POST["password"]))
     {
-        if($_POST["name"] == "admin")
-        {echo("nigger");}
+        if($_POST["name"] == "user" && $_POST["password"] == "user")
+        {
+            header("Location: http://localhost/Projekt_databaze/assign_site.html");
+        }
     }
     ?>
 
