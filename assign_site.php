@@ -8,6 +8,11 @@
         <link rel="icon" type="image/x-icon" href="/Pictures/logo.svg.png">
     <link rel="stylesheet" href="./style.css">
 
+<?php
+$dbSpojeni = mysqli_connect("localhost", "root", "", "zwa_project");
+mysqli_set_charset($dbSpojeni, "UTF8");
+?>
+
 </head>
 <body>
     <h1>Search anyone, anytime</h1>
@@ -16,7 +21,7 @@
         Quick word, please keep in mind that this is student´s project and usage of this site is on your own responsibility and for education purposes only!
     </p>
 
-    <form method="post" action="./php_code.php">
+    <form method="post" action="./site_with_information.php">
         <div class="input-container">
             <input type="text" name="name" required class="text-input" placeholder="Enter name">
             <label class="label">Name</label>
@@ -29,5 +34,16 @@
             <input type="submit" value="Send">
         </div>
     </form>
+
+<?php
+    if(isset($_POST["name"], $_POST["surname"]))
+    {
+            header("Location: http://localhost/Projekt_databaze/site_with_information.php");
+    }
+?>
+
 </body>
 </html>
+
+
+
