@@ -13,6 +13,7 @@
     <h1>Login Site</h1>
 
     <form method="post">
+        <p>Aren't registered yet? <a href="http://localhost/Projekt_databaze/register_site.php">Click here.</a></p>
         <div class="input-container">
             <input type="text" name="Jmeno" required class="text-input" placeholder="Enter name">
             <label class="label">Name</label>
@@ -39,13 +40,13 @@
 
         if ($vysledek_jmena) {
             if ($jmeno == $vysledek_jmena["Jmeno"] && $prijmeni == $vysledek_jmena["Prijmeni"]) {
-                echo "Valid";
+                echo "<p>Valid</p>";
                 header("Location: http://localhost/Projekt_databaze/assign_site.php");
             } else {
-                echo "Wrong login details";
+                echo "<p>Wrong login details</p>";
             }
         } else {
-            echo "Wrong login details";
+            echo "<p>Wrong login details</p>";
         }
     }
     ?>
