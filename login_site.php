@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fearless</title>
-        <link rel="icon" type="image/x-icon" href="/Pictures/logo.svg.png">
+    <link rel="icon" type="image/x-icon" href="/Pictures/logo.svg.png">
     <link rel="stylesheet" href="./style.css">
 
 </head>
@@ -14,10 +14,10 @@
 
     <form method="post">
         <div class="input-container">
-            <input type="text" name="name" required class="text-input" placeholder="Enter name">
+            <input type="text" name="Jmeno" required class="text-input" placeholder="Enter name">
             <label class="label">Name</label>
             <br>
-            <input type="password" name="password" required class="text-input" placeholder="Enter Surname">
+            <input type="password" name="Prijmeni" required class="text-input" placeholder="Enter Surname">
             <label class="labelSurname">Password</label>
         </div>
 
@@ -27,11 +27,25 @@
     </form>
 
     <?php
-    if(isset($_POST["name"], $_POST["password"]))
-    {
-        if($_POST["name"] == "user" && $_POST["password"] == "user")
-        {
-            header("Location: http://localhost/Projekt_databaze/assign_site.php");
+    $dbSpojeni = mysqli_connect("localhost", "root", "", "zwa_project");
+    mysqli_set_charset($dbSpojeni, "UTF8");
+
+    if (isset($_POST["Jmeno"], $_POST["Prijmeni"])) {
+        $jmeno = $_POST["Jmeno"];
+        $prijmeni = $_POST["Prijmeni"];
+        $select_jmena_prijmeni = "SELECT Jmeno, Prijmeni FROM logiin WHERE Jmeno = '$jmeno' and Prijmeni = '$prijmeni'";
+        $vysledekDotazuLogiin_jmena_prijmeni = mysqli_query($dbSpojeni, $select_jmena_prijmeni);
+        $vysledek_jmena = mysqli_fetch_assoc($vysledekDotazuLogiin_jmena_prijmeni);
+
+        if ($vysledek_jmena) {
+            if ($jmeno == $vysledek_jmena["Jmeno"] && $prijmeni == $vysledek_jmena["Prijmeni"]) {
+                echo "Valid";
+                header("Location: http://localhost/Projekt_databaze/assign_site.php");
+            } else {
+                echo "Wrong login details";
+            }
+        } else {
+            echo "Wrong login details";
         }
     }
     ?>
