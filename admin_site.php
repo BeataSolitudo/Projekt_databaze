@@ -70,6 +70,19 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
 
 ?>
 
+<?php
+    if(isset($_POST["notee"]))
+    {
+        $dbSpojeni = mysqli_connect("localhost", "root", "", "zwa_project");
+        mysqli_set_charset($dbSpojeni, "UTF8");
+
+        $notee = $_POST["notee"];
+
+        $insertQuery = "INSERT INTO notes (Note) VALUES ('$notee')";
+        mysqli_query($dbSpojeni, $insertQuery);
+    }
+?>
+
 
 <!DOCTYPE html>
 <html>
@@ -95,6 +108,12 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
     <form method="post">
         <input type="text" name="idee" placeholder="ID of user">
         <input type="submit" name="Delete" value="Delete">
+    </form>
+
+    <h1>Note</h1>
+    <form method="post">
+        <input type="text" name="notee">
+        <input type="submit" name="Send" value="Send">
     </form>
 
 </body>
