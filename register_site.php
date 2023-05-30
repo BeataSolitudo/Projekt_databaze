@@ -26,7 +26,7 @@
         </div>
     </form>
 
-    <?php
+<?php
     $dbSpojeni = mysqli_connect("localhost", "root", "", "zwa_project");
     mysqli_set_charset($dbSpojeni, "UTF8");
 
