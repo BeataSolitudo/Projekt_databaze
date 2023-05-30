@@ -7,7 +7,6 @@
     <title>Fearless</title>
     <link rel="icon" type="image/x-icon" href="/Pictures/logo.svg.png">
     <link rel="stylesheet" href="./style.css">
-
 </head>
 <body>
     <h1>Login Site</h1>
@@ -34,20 +33,28 @@
     if (isset($_POST["Jmeno"], $_POST["Prijmeni"])) {
         $jmeno = $_POST["Jmeno"];
         $prijmeni = $_POST["Prijmeni"];
-        $select_jmena_prijmeni = "SELECT Jmeno, Prijmeni FROM logiin WHERE Jmeno = '$jmeno' and Prijmeni = '$prijmeni'";
-        $vysledekDotazuLogiin_jmena_prijmeni = mysqli_query($dbSpojeni, $select_jmena_prijmeni);
-        $vysledek_jmena = mysqli_fetch_assoc($vysledekDotazuLogiin_jmena_prijmeni);
-
-        if ($vysledek_jmena) {
-            if ($jmeno == $vysledek_jmena["Jmeno"] && $prijmeni == $vysledek_jmena["Prijmeni"]) {
-                echo "<p>Valid</p>";
-                header("Location: http://localhost/Projekt_databaze/assign_site.php");
+        if($jmeno == "admin" && $prijmeni == "admin")
+        {
+            header("Location: http://localhost/Projekt_databaze/admin_site.php"); 
+        }
+        else
+        {
+            $select_jmena_prijmeni = "SELECT Jmeno, Prijmeni FROM logiin WHERE Jmeno = '$jmeno' and Prijmeni = '$prijmeni'";
+            $vysledekDotazuLogiin_jmena_prijmeni = mysqli_query($dbSpojeni, $select_jmena_prijmeni);
+            $vysledek_jmena = mysqli_fetch_assoc($vysledekDotazuLogiin_jmena_prijmeni);
+    
+            if ($vysledek_jmena) {
+                if ($jmeno == $vysledek_jmena["Jmeno"] && $prijmeni == $vysledek_jmena["Prijmeni"]) {
+                    echo "<p>Valid</p>";
+                    header("Location: http://localhost/Projekt_databaze/assign_site.php");
+                } else {
+                    echo "<p>Wrong login details</p>";
+                }
             } else {
                 echo "<p>Wrong login details</p>";
             }
-        } else {
-            echo "<p>Wrong login details</p>";
         }
+
     }
     ?>
 
